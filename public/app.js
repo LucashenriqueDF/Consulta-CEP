@@ -1,6 +1,6 @@
 //Consulta de CEP na API
   const cep = document.getElementById("inputEntradaDeDados")
-  const button = document.getElementById("btn")
+ 
 
   console.log(cep)
   async function get_cep (cep) {
@@ -10,7 +10,7 @@
   const url = `http://viacep.com.br/ws/${cep}/json/`
   const response = await fetch (url)
   
-  return response.json().this(MostrarResultado)
+  return response.json()
   
   }
 
@@ -19,6 +19,7 @@
     const data = await get_cep(cep_value)
 
     console.log(data);
+    MostrarResultado(data);
     })
   
     
@@ -29,7 +30,7 @@
     if(dados.erro){
       result.innerHTMl("Não foi possivel localizar endereço");
     }else{
-      result.innerHTMl=    `<p>logradouro:${dados.logradouro}</p> 
+      result.innerHTMl =    `<p>logradouro:${dados.logradouro}</p> 
                             <p>bairro:${dados.bairro} </p>
                             <p>uf:${dados.uf} </p>
                             <p>ibge:${dados.ibge} </p>
